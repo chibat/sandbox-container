@@ -4,12 +4,8 @@
     "dockerfile": "Dockerfile"
   },
   "runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW"
+    "--cap-add=NET_ADMIN"
   ],
-  "remoteUser": "vscode",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
-  "workspaceFolder": "/workspace",
   "postStartCommand": "sudo /usr/local/bin/init-firewall.sh",
   "waitFor": "postStartCommand"
 }

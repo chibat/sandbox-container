@@ -2,27 +2,15 @@ FROM mcr.microsoft.com/devcontainers/base:debian
 
 # Install basic development tools and iptables/ipset
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  sudo \
-  git \
   iptables \
   ipset \
-  iproute2 \
   dnsutils \
   aggregate \
-  jq \
-  vim \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ARG USERNAME=vscode
 
-# Set `DEVCONTAINER` environment variable to help with orientation
-ENV DEVCONTAINER=true
-
-# Create workspace and config directories and set permissions
-RUN mkdir -p /workspace && \
-  chown -R vscode:vscode /workspace
-
-WORKDIR /workspace
+WORKDIR /workspaces/sandbox-container
 
 # Set up non-root user
 USER vscode
